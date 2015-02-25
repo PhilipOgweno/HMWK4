@@ -16,7 +16,11 @@
 #include <fstream>
 #include <iomanip>
 
+
+
 using namespace std;
+
+string message1, message2;
 
 // Open the output file to write in 
 
@@ -71,6 +75,17 @@ void printoutput(ofstream& outputFile, int number, long double* fibArray, int le
     }
 }
 
+
+
+void printoutput(ofstream& outputFile, string message)
+{
+	outputFile << message << endl; 
+	cout << message << endl;
+	
+}
+
+
+
 // Function to open input file 
 
 void openinput(ifstream& inputFile, string inputFileName)
@@ -121,22 +136,14 @@ int main ()
 {
 
 
-    cout << "\n";
-    cout << " I was able to compile this code using the HPC at the" 
-         << " University of Memphis. When I compiled it there," 
-         << " it did not produce any warning message."
-         << " The HPC uses a GNU C++ compiler that can be considered "
-         << " a good up-to-date standard. I also version-controlled this code "
-         << " using git, and use a remote repository hosted by github."
-         << " If I can do this, so can you!!!"
-         << " \n ";
-    cout << " \n ";
-    cout << " I am so cool, that I was also able to write a code that "
-         << " produces the fib1 N numbers of the Fibonacci sequence. Here they are:"
-         << " \n ";
-    cout << " \n ";
-
-    // open input file 
+    
+	message1 = "I was able to compile this code using the HPC at the University of Memphis."
+	"When I compiled it there, it did not produce any warning message. The HPC uses a GNU"
+	" C++ compiler that can be considered a good up-to-date standard. I also version-controlled"
+	" this code using git, and used a remote repository hosted by github. If I can do this, so can you!!!";
+	message2 = "I am so cool, that I was also able to write a code that produces the first M numbers of the Fibonacci sequence. Here they are:";
+    
+	// open input file 
     string inputFileName = "philip.in" ;
     ifstream inputFile;
     openinput(inputFile, inputFileName);
@@ -187,8 +194,11 @@ int main ()
     // Write out results to terminal and  output file
     
     int file = 1; int  terminal = 2;
+    printoutput(outputFile, message1);
+    printoutput(outputFile, "\n");
+    printoutput(outputFile, message2);
     printoutput(outputFile, file, fibArray, arraylen);
-
+    
     printoutput(outputFile, terminal, fibArray, arraylen);
 }
     
